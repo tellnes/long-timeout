@@ -20,7 +20,7 @@ lt.clearTimeout(timeout)
 
 ## Install
 
-    npm install long-timeoits
+    npm install long-timeout
 
 
 ## Licence
