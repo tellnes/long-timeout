@@ -11,5 +11,12 @@
     "url": "git://github.com/tellnes/long-timeout.git"
   },
   "author": "Christian Tellnes <christian@tellnes.no> (http://christian.tellnes.com/)",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tellnes/long-timeout/issues"
+  },
+  "homepage": "https://github.com/tellnes/long-timeout",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
 }
