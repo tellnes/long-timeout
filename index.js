@@ -61,5 +61,5 @@ Interval.prototype.start = function() {
 }
 
 Interval.prototype.close = function() {
-  Timeout.prototype.close.apply(this, arguments);
+  Timeout.prototype.close.apply(this, arguments)
 }

@@ -25,7 +25,7 @@ var interval = lt.setInterval(function() {
 }, 1000 * 60 * 60 * 24 * 30)
 
 // Clear it
-lt.clearInterval(interval);
+lt.clearInterval(interval)
 ```
 
 ## Install
