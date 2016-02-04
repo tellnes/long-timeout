@@ -18,11 +18,12 @@ lt.clearTimeout(timeout)
 ```
 
 ```js
-var lt = require('longtimeout')
+var lt = require('long-timeout')
 
 var interval = lt.setInterval(function() {
   console.log('every 30 days')
 }, 1000 * 60 * 60 * 24 * 30)
+
 
 // Clear it
 lt.clearInterval(interval)
