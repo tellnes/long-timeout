@@ -18,7 +18,26 @@ exports.Interval = Interval
 function Timeout(listener, after) {
   this.listener = listener
   this.after = after
+  this.unreffed = false
   this.start()
+}
+
+Timeout.prototype.unref = function () {
+    if (!this.unreffed) {
+        this.unreffed = true
+        if (this.timeout && typeof (this.timeout.unref) === 'function') {
+            this.timeout.unref()
+        }
+    }
+}
+
+Timeout.prototype.ref = function () {
+    if (this.unreffed) {
+        this.unreffed = false
+        if (this.timeout && typeof (this.timeout.ref) === 'function') {
+            this.timeout.ref()
+        }
+    }
 }
 
 Timeout.prototype.start = function() {
@@ -31,6 +50,9 @@ Timeout.prototype.start = function() {
       self.start()
     }, TIMEOUT_MAX)
   }
+  if (this.unreffed && this.timeout && typeof (this.timeout.unref) === 'function') {
+    this.timeout.unref()
+  }
 }
 
 Timeout.prototype.close = function() {
@@ -40,7 +62,26 @@ Timeout.prototype.close = function() {
 function Interval(listener, after) {
   this.listener = listener
   this.after = this.timeLeft = after
+  this.unreffed = false
   this.start()
+}
+
+Interval.prototype.unref = function () {
+    if (!this.unreffed) {
+        this.unreffed = true
+        if (this.timeout && typeof (this.timeout.unref) === 'function') {
+            this.timeout.unref()
+        }
+    }
+}
+
+Interval.prototype.ref = function () {
+    if (this.unreffed) {
+        this.unreffed = false
+        if (this.timeout && typeof (this.timeout.ref) === 'function') {
+            this.timeout.ref()
+        }
+    }
 }
 
 Interval.prototype.start = function() {
@@ -57,6 +98,9 @@ Interval.prototype.start = function() {
       self.timeLeft -= TIMEOUT_MAX
       self.start()
     }, TIMEOUT_MAX)
+  }
+  if (this.unreffed && this.timeout && typeof (this.timeout.unref) === 'function') {
+    this.timeout.unref()
   }
 }
 
