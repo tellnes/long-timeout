@@ -23,21 +23,17 @@ function Timeout(listener, after) {
 }
 
 Timeout.prototype.unref = function () {
-    if (!this.unreffed) {
-        this.unreffed = true
-        if (this.timeout && typeof (this.timeout.unref) === 'function') {
-            this.timeout.unref()
-        }
-    }
+  if (!this.unreffed) {
+    this.unreffed = true
+    this.timeout.unref()
+  }
 }
 
 Timeout.prototype.ref = function () {
-    if (this.unreffed) {
-        this.unreffed = false
-        if (this.timeout && typeof (this.timeout.ref) === 'function') {
-            this.timeout.ref()
-        }
-    }
+  if (this.unreffed) {
+    this.unreffed = false
+    this.timeout.ref()
+  }
 }
 
 Timeout.prototype.start = function() {
@@ -50,7 +46,7 @@ Timeout.prototype.start = function() {
       self.start()
     }, TIMEOUT_MAX)
   }
-  if (this.unreffed && this.timeout && typeof (this.timeout.unref) === 'function') {
+  if (this.unreffed) {
     this.timeout.unref()
   }
 }
@@ -67,21 +63,17 @@ function Interval(listener, after) {
 }
 
 Interval.prototype.unref = function () {
-    if (!this.unreffed) {
-        this.unreffed = true
-        if (this.timeout && typeof (this.timeout.unref) === 'function') {
-            this.timeout.unref()
-        }
-    }
+  if (!this.unreffed) {
+    this.unreffed = true
+    this.timeout.unref()
+  }
 }
 
 Interval.prototype.ref = function () {
-    if (this.unreffed) {
-        this.unreffed = false
-        if (this.timeout && typeof (this.timeout.ref) === 'function') {
-            this.timeout.ref()
-        }
-    }
+  if (this.unreffed) {
+    this.unreffed = false
+    this.timeout.ref()
+  }
 }
 
 Interval.prototype.start = function() {
@@ -99,7 +91,7 @@ Interval.prototype.start = function() {
       self.start()
     }, TIMEOUT_MAX)
   }
-  if (this.unreffed && this.timeout && typeof (this.timeout.unref) === 'function') {
+  if (this.unreffed) {
     this.timeout.unref()
   }
 }
