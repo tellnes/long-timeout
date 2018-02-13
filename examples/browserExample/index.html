@@ -1,0 +1,34 @@
+<html>
+  <body>
+    <div>
+      <label>Count:</label>
+      <span id="count">0</span>
+    </div>
+    <script type="text/javascript" src="../../dist/longTimeout.js"></script>
+    <script type="text/javascript">
+      // keep track of a number called count
+      var count = 0;
+      function incrementCount(maxTimeout) {
+        var element = document.getElementById('count');
+        // make sure it is not a maxTimeout call
+        if (!maxTimeout) {
+          count = count + 1;
+          // update the dom elements text
+          element.textContent = count;
+        } else {
+          element.textContent = 'REACHED MAX TIME';
+        }
+      }
+
+      // call increment count on max value
+      LongTimeout.setTimeout(function() {
+        incrementCount(true);
+      }, Number.MAX_VALUE);
+
+      // call increment count on an interval of 2 seconds
+      LongTimeout.setInterval(function() {
+        incrementCount(false);
+      }, 2000);
+    </script>
+  </body>
+</html>
