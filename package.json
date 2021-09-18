@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/tellnes/long-timeout/issues"
   },
-  "homepage": "https://github.com/tellnes/long-timeout",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  }
+  "homepage": "https://github.com/tellnes/long-timeout"
 }
